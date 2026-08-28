@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A focused habit tracker with streaks, weekly progress and local persistence.">
+  <title>Habit — Habit Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">H</span>Habit</a>
+    <button class="today-button" id="today-button" type="button">Today</button>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">DAILY PRACTICE</p>
+        <h1>Small actions.<br>Real progress.</h1>
+        <p class="hero-copy">Build consistency by focusing on what you can do today.</p>
+      </div>
+      <button class="primary" id="add-habit-button" type="button">Add habit</button>
+    </section>
+
+    <section class="stats" aria-label="Habit statistics">
+      <article class="stat-card">
+        <span>Today's progress</span>
+        <strong id="today-progress">0%</strong>
+        <small id="today-count">0 of 0 completed</small>
+      </article>
+      <article class="stat-card">
+        <span>Active habits</span>
+        <strong id="active-count">0</strong>
+        <small>Currently being tracked</small>
+      </article>
+      <article class="stat-card">
+        <span>Best streak</span>
+        <strong id="best-streak">0</strong>
+        <small>Days in a row</small>
+      </article>
+    </section>
+
+    <section class="workspace">
+      <article class="panel habits-panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">YOUR HABITS</p>
+            <h2>Today</h2>
+          </div>
+          <span class="date-label" id="date-label"></span>
+        </div>
+        <div id="habit-list" class="habit-list"></div>
+      </article>
+
+      <aside class="panel week-panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">WEEK</p>
+            <h2>Consistency</h2>
+          </div>
+        </div>
+        <div id="week-grid" class="week-grid"></div>
+        <div class="legend">
+          <span><i class="legend-dot completed"></i>Completed</span>
+          <span><i class="legend-dot"></i>Pending</span>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <dialog id="habit-dialog">
+    <form id="habit-form">
+      <div class="dialog-header">
+        <div>
+          <p class="eyebrow">NEW HABIT</p>
+          <h2 id="dialog-title">Add habit</h2>
+        </div>
+        <button class="close-button" id="close-dialog" type="button" aria-label="Close">×</button>
+      </div>
+
+      <label>
+        Name
+        <input id="habit-name" name="name" maxlength="50" placeholder="e.g. Read 20 pages" required>
+      </label>
+
+      <label>
+        Frequency
+        <select id="habit-frequency" name="frequency">
+          <option value="daily">Every day</option>
+          <option value="weekdays">Weekdays</option>
+          <option value="weekly">Weekly</option>
+        </select>
+      </label>
+
+      <label>
+        Icon
+        <select id="habit-icon" name="icon">
+          <option value="book">Book</option>
+          <option value="code">Code</option>
+          <option value="sport">Sport</option>
+          <option value="water">Water</option>
+          <option value="sleep">Sleep</option>
+          <option value="study">Study</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <input id="editing-id" type="hidden">
+
+      <div class="dialog-actions">
+        <button class="secondary" id="cancel-dialog" type="button">Cancel</button>
+        <button class="primary" type="submit">Save habit</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <footer>Habit · Your progress is stored locally in this browser.</footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
